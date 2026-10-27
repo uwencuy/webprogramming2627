@@ -7,6 +7,9 @@ import KartuRingkasan from './component/KartuRingkasan'
 import Badge from './component/Badge'
 import WalletSummary from './component/WalletSummary'
 import AppNavigation from './component/AppNavigation'
+import TransactionManager from './component/TransactionManager'
+import LayoutGrid from './component/LayoutGrid'
+import HeaderBanner from './component/HeaderBanner'
 
 function App() {
   return (
@@ -17,9 +20,14 @@ function App() {
         <Route path='/kartu' element={ <KartuRingkasan />} />
         <Route path='/badge' element={ <Badge />} />
         <Route path='/wallet' element={ <WalletSummary />} />
+        <Route path='/LayoutGrid' element={ <LayoutGrid/>  } />
+        <Route path='/HeaderBanner' element={ <HeaderBanner/>  } />
+        <Route path='/CardStatusDemo' element={ <CardStatusDemo/> } />
+        <Route path='/AppNavigation' element={ <AppNavigation/> } />
+        <Route path='/TransactionManager' element={ <TransactionManager/> } />
       </Routes>
     </>
-  );
+  )
 }
 
 export default App;
