@@ -1,11 +1,10 @@
 import './App.css'
-
 import { Route, Routes } from 'react-router-dom'
-
 import TransaksiItem from './component/TransaksiItem'
 import KartuRingkasan from './component/KartuRingkasan'
 import Badge from './component/Badge'
 import WalletSummary from './component/WalletSummary'
+import CardStatusDemo from './component/CardStatusDemo'
 import AppNavigation from './component/AppNavigation'
 import TransactionManager from './component/TransactionManager'
 import LayoutGrid from './component/LayoutGrid'
@@ -14,7 +13,7 @@ import HeaderBanner from './component/HeaderBanner'
 function App() {
   return (
     <>
-      <AppNavigation/>
+      <AppNavigation />
       <Routes>
         <Route path='/transaksi' element={ <TransaksiItem />} />
         <Route path='/kartu' element={ <KartuRingkasan />} />
@@ -29,5 +28,4 @@ function App() {
     </>
   )
 }
-
 export default App;
