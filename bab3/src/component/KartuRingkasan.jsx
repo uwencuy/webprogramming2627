@@ -13,5 +13,5 @@ export default function KartuRingkasan() {
         <div style={cardStyle}>
             <p style={textStyle}>Total Saldo: Rp 2.500.000</p>
         </div>
-    )
+    );
 }
