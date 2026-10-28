@@ -1,0 +1,12 @@
+GET http://localhost:3000/comments
+
+###
+GET http://localhost:3000/posts
+
+###
+# Desain_UI_API
+GET http://localhost:3000/profile
+
+###
+# Desain_UI_API
+GET http://localhost:3000/transaksi
