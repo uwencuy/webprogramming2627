@@ -1,9 +1,11 @@
-
 import { Card, Button, Badge, Alert, Dropdown, ButtonGroup } from 'react-bootstrap';
+
+// Export default function CardStatusDemo()
+// Card.header Card.body Card.title Dropdown.menu
 
 export default function CardStatusDemo() {
   return (
-    <Card className="shadow-sm mx-auto" style={{ width: '100%' }}>
+    <Card className="shadow-sm" style={{ width: '24rem' }}>
       <Card.Header className="d-flex justify-content-between align-items-center">
         <span>Laporan Dompet</span>
         <Badge bg="success">Aktif</Badge>
@@ -16,7 +18,6 @@ export default function CardStatusDemo() {
         <Card.Text className="text-muted">
           Total pemasukan bulan ini telah melebihi target.
         </Card.Text>
-
         <Dropdown as={ButtonGroup}>
           <Button variant="primary">Ekspor Laporan</Button>
           <Dropdown.Toggle split variant="primary" id="dropdown-split-basic" />
