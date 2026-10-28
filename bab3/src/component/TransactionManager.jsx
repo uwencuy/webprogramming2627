@@ -1,39 +1,64 @@
-
 import { useState, useEffect } from 'react';
+import axios from 'axios';
+{/* 
+// 
+import {useState} from 'react'; 
+*/}
 import {Form, InputGroup, Modal, Button, Table, ProgressBar}from 'react-bootstrap';
-export default function TransactionManager() {
-  const [show, setShow] = useState(false);
+
+// const s = useState(false)
+function TransactionManager() {
+  const [show, setShow] = useState(false)
   const [transaksi, setTransaksi] = useState([])
-  
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
+  /*const ambilData = () => {
+    fetch('http://localhost:3000/transaksi')
+    .then ((response) => response.json())
+    .then((data) => {
+      console.log('Data diterima:', data)
+      setTransaksi(data)
+    })
+    .catch((error) => {
+      console.error('ada kesalahan mengambil data', error );
+    });
 
-  const ambilDataAsync = async () =>{
+  }; */
+/*  const ambilDataAsync = async () =>{   
     try {
       const response = await fetch('http://localhost:3000/transaksi');
       if (!response.ok) {
-        throw new Error ('Gagal mengambil data dari server');
+        throw new Error ('Gagal mengambil data dari server')
       }
-
-      const data = await response.json()
-      console.log ('Data diterima:', data);
+      const data = await response.json();
+      console.log ('Data diterima:', data)
       setTransaksi(data);
     } catch (error) {
       console.error('Error:', error.message);
-    };
+    }
+  }; */
+    const ambilDataAxios = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/transaksi');
+      setTransaksi(response.data);
+    } catch (error) {
+      console.error('Terjadi kesalahan jaringan:', error.message);
+    }
   };
 
   useEffect(() => {
-    {/*
-      ambilData();
-    */}
-      ambilDataAsync();
-    }, []
-  )
+    /*ambilData(); */
+   /* ambilDataAsync(); */
+    ambilDataAxios();
+  }, []);
 
+  
   return (
     <div className="container mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-3">
+    {/* <AppNavigation /> */}
+    <div className="d-flex justify-content-between align-items-center mb-3">
         <h3>Penggunaan Anggaran</h3>
         <Button variant="success" onClick={handleShow}>
           + Tambah Transaksi
@@ -53,17 +78,17 @@ export default function TransactionManager() {
         </thead>
         <tbody>
           {
-            transaksi.map(
-              (item, index) => (
-                <tr key={item.id || index}>
-                  <td>{index + 1}</td>
-                  <td>{item.keterangan}</td>
-                  <td>{item.kategori}</td>
-                  <td>{item.nominal}</td>
-                </tr>
-              )
+          transaksi.map((item, index) => (
+            <tr key={item.id || index}>
+              <td>{index + 1}</td>
+              <td>{item.keterangan}</td>
+              <td>{item.kategori}</td>
+              <td>{item.nominal}</td>
+            </tr>
+             )
             )
           }
+
         </tbody>
       </Table>
 
@@ -98,3 +123,5 @@ export default function TransactionManager() {
     </div>
   );
 }
+
+export default TransactionManager;
