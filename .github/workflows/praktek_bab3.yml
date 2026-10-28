@@ -15,6 +15,7 @@ jobs:
     defaults:
       run:
         working-directory: ./bab3
+        
 
     steps:
       - name: Mengambil kode mahasiswa (beserta seluruh riwayat commit)
@@ -266,6 +267,350 @@ jobs:
             echo "✅ AMAN: Struktur deklarasi sudah sesuai"
             exit 0
           fi
+
+      # ---------------------------------------------------------
+      # STEP 6: Instalasi React Bootstrap & Bootstrap
+      # ---------------------------------------------------------
+      - name: 6.  Grid System (container,row,Col)
+        run: |
+          ERROR=0
+          # Fungsi pembantu untuk memindai teks
+          cek_teks() {
+            local file=$1
+            local teks_wajib=$2
+            # grep akan mencari teks di dalam file. Jika tidak ketemu, maka ERROR
+            if ! grep -q "$teks_wajib" "$file"; then
+              echo "❌ PELANGGARAN di $file: Belum ada berkas ini '$teks_wajib'"
+              ERROR=1
+            fi
+          }
+          # FILE 
+          FILE_A="src/component/LayoutGrid.jsx"
+          FILE_B="src/App.jsx"
+
+          cek_teks "$FILE_A" "import { Container, Row, Col } from 'react-bootstrap';"
+          cek_teks "$FILE_A" "LayoutGrid()"
+          cek_teks "$FILE_A" "<Container"
+          cek_teks "$FILE_A" "<Row>"
+          cek_teks "$FILE_A" "<Col md={8}>"
+          cek_teks "$FILE_A" "<Col md={4}>"
+          cek_teks "$FILE_A" "Ringkasan Saldo"
+          cek_teks "$FILE_B" "<Route path='/LayoutGrid' element={ <LayoutGrid/>  } />"
+          
+          if [ $ERROR -eq 1 ]; then
+            echo ""
+            echo "Status: Struktur tidak boleh dimodifikasi!"
+            exit 1
+          else
+            echo ""
+            echo "✅ AMAN: Struktur deklarasi sudah sesuai dengan materi"
+            exit 0
+          fi
+        
+      # ---------------------------------------------------------
+      # STEP 7: Instalasi React Bootstrap & Bootstrap
+      # ---------------------------------------------------------
+      - name: 7.  Jumbotron pada Bootstrap Modern
+        run: |
+          ERROR=0
+          # Fungsi pembantu untuk memindai teks
+          cek_teks() {
+            local file=$1
+            local teks_wajib=$2
+            # grep akan mencari teks di dalam file. Jika tidak ketemu, maka ERROR
+            if ! grep -q "$teks_wajib" "$file"; then
+              echo "❌ PELANGGARAN di $file: Belum ada berkas ini '$teks_wajib'"
+              ERROR=1
+            fi
+          }
+          # FILE 
+          FILE_A="src/component/HeaderBanner.jsx"
+          FILE_B="src/App.jsx"
+
+          cek_teks "$FILE_A" "function HeaderBanner() {"
+          cek_teks "$FILE_A" "return ("
+          cek_teks "$FILE_A" "p-5 mb-4 bg-light rounded-3 border"
+          cek_teks "$FILE_A" "<Container fluid"
+          cek_teks "$FILE_A" "display-5 fw-bold"
+          cek_teks "$FILE_A" "col-md-8 fs-4"
+          cek_teks "$FILE_A" "Catatan Keuangan"
+
+          cek_teks "$FILE_B" "<Route path='/HeaderBanner' element={ <HeaderBanner/>  } />"
+          
+          if [ $ERROR -eq 1 ]; then
+            echo ""
+            echo "Status: Struktur tidak boleh dimodifikasi!"
+            exit 1
+          else
+            echo ""
+            echo "✅ AMAN: Struktur deklarasi sudah sesuai dengan materi"
+            exit 0
+          fi
+      
+      # ---------------------------------------------------------
+      # STEP 8: 
+      # ---------------------------------------------------------
+      - name: 8.  CardStatusDemo
+        run: |
+          ERROR=0
+          # Fungsi pembantu untuk memindai teks
+          cek_teks() {
+            local file=$1
+            local teks_wajib=$2
+            # grep akan mencari teks di dalam file. Jika tidak ketemu, maka ERROR
+            if ! grep -q "$teks_wajib" "$file"; then
+              echo "❌ PELANGGARAN di $file: Belum ada berkas ini '$teks_wajib'"
+              ERROR=1
+            fi
+          }
+          # FILE 
+          FILE_A="src/component/CardStatusDemo.jsx"
+          FILE_B="src/App.jsx"
+
+          cek_teks "$FILE_A" "import { Card, Button, Badge, Alert, Dropdown, ButtonGroup } from 'react-bootstrap';"
+          cek_teks "$FILE_A" "Export default function CardStatusDemo()"
+          cek_teks "$FILE_A" "Card.header"
+          cek_teks "$FILE_A" "<span>"
+          cek_teks "$FILE_A" "<Badge"
+          cek_teks "$FILE_A" "Card.body"
+          cek_teks "$FILE_A" "Alert"
+          cek_teks "$FILE_A" "Card.title"
+          cek_teks "$FILE_A" "Dropdown"
+          cek_teks "$FILE_A" "Button"
+          cek_teks "$FILE_A" "Dropdown.Toggle"
+          cek_teks "$FILE_A" "Dropdown.menu"
+          cek_teks "$FILE_B" "<Route path='/CardStatusDemo' element={ <CardStatusDemo/> } />"
+          
+          if [ $ERROR -eq 1 ]; then
+            echo ""
+            echo "Status: Struktur tidak boleh dimodifikasi!"
+            exit 1
+          else
+            echo ""
+            echo "✅ AMAN: Struktur deklarasi sudah sesuai dengan materi"
+            exit 0
+          fi
+      # ---------------------------------------------------------
+      # STEP 9: Navigasi UI: Nav, NavBar, Navigasi Routing
+      # ---------------------------------------------------------
+      - name: 9.  Navigasi UI Nav, NavBar, Navigasi Routing
+        run: |
+          ERROR=0
+          # Fungsi pembantu untuk memindai teks
+          cek_teks() {
+            local file=$1
+            local teks_wajib=$2
+            # grep akan mencari teks di dalam file. Jika tidak ketemu, maka ERROR
+            if ! grep -q "$teks_wajib" "$file"; then
+              echo "❌ PELANGGARAN di $file: Belum ada berkas ini '$teks_wajib'"
+              ERROR=1
+            fi
+          }
+          # FILE 
+          FILE_A="src/component/AppNavigation.jsx"
+          FILE_B="src/App.jsx"
+
+          cek_teks "$FILE_A" "import { Navbar, Nav, NavDropdown, Container} from 'react-bootstrap'"
+          cek_teks "$FILE_A" "import { NavLink } from 'react-router-dom'"
+          cek_teks "$FILE_A" "function AppNavigation(){"
+          cek_teks "$FILE_A" "return ("
+          cek_teks "$FILE_A" "<Navbar bg='dark' variant='dark' expand='lg' className='mb-4'>"
+          cek_teks "$FILE_A" "<Container>"
+          cek_teks "$FILE_A" "<Navbar.Brand as={NavLink} to='/'>Catatan Keuangan</Navbar.Brand>"
+          cek_teks "$FILE_A" "<Navbar.Toggle"
+          cek_teks "$FILE_A" "<Navbar.Collapse"
+          cek_teks "$FILE_A" "me-auto"
+          cek_teks "$FILE_A" "<Nav.Link"
+          cek_teks "$FILE_A" "Home"
+          cek_teks "$FILE_A" "Transaksi"
+          cek_teks "$FILE_A" "<NavDropdown"
+          cek_teks "$FILE_A" "Badge"
+          cek_teks "$FILE_A" "CardStatusDemo"
+          cek_teks "$FILE_A" "HeaderBanner"
+          cek_teks "$FILE_A" "TransactionManager"
+          cek_teks "$FILE_A" "KartuRingkasan"
+          cek_teks "$FILE_A" "LayoutGrid"
+          cek_teks "$FILE_A" "WalletSummary"
+          cek_teks "$FILE_A" "export default  AppNavigation"
+
+          cek_teks "$FILE_B" "<AppNavigation />"
+          cek_teks "$FILE_B" "<Route path='/AppNavigation' element={ <AppNavigation/> } />"
+          
+          if [ $ERROR -eq 1 ]; then
+            echo ""
+            echo "Status: Struktur tidak boleh dimodifikasi!"
+            exit 1
+          else
+            echo ""
+            echo "✅ AMAN: Struktur deklarasi sudah sesuai dengan materi"
+            exit 0
+          fi
+        
+      # ---------------------------------------------------------
+      # STEP 10: Komponen Tambahan: Forms, Input Group, Images, Figure, List Group, Modal,Overlays, Pagination, Progress Bar, Table, Tabs, Collapse 
+      # ---------------------------------------------------------
+      - name: 10.  Komponen Tambahan
+        run: |
+          ERROR=0
+          # Fungsi pembantu untuk memindai teks
+          cek_teks() {
+            local file=$1
+            local teks_wajib=$2
+            # grep akan mencari teks di dalam file. Jika tidak ketemu, maka ERROR
+            if ! grep -q "$teks_wajib" "$file"; then
+              echo "❌ PELANGGARAN di $file: Belum ada berkas ini '$teks_wajib'"
+              ERROR=1
+            fi
+          }
+          # FILE 
+          FILE_A="src/component/TransactionManager.jsx"
+          FILE_B="src/App.jsx"
+
+          cek_teks "$FILE_A" "import {useState} from 'react'"
+          cek_teks "$FILE_A" "import {Form, InputGroup, Modal, Button, Table, ProgressBar}"
+          cek_teks "$FILE_A" "function TransactionManager("
+          cek_teks "$FILE_A" "const [show, setShow] = useState(false)"
+          cek_teks "$FILE_A" "const handleClose = () => setShow(false)"
+          cek_teks "$FILE_A" "const handleShow = () => setShow(true)"
+          cek_teks "$FILE_A" "container mt-4"
+          cek_teks "$FILE_A" "d-flex justify-content-between align-items-center mb-3"
+          cek_teks "$FILE_A" "<h3>Penggunaan Anggaran</h3>"
+          cek_teks "$FILE_A" "<Button"
+          cek_teks "$FILE_A" "<ProgressBar"
+          cek_teks "$FILE_A" "<Table"
+          cek_teks "$FILE_A" "<thead>"
+          cek_teks "$FILE_A" "<tr>"
+          cek_teks "$FILE_A" "<th>"
+          cek_teks "$FILE_A" "<tbody>"
+          cek_teks "$FILE_A" "<Modal"
+          cek_teks "$FILE_A" "<Modal.Header"
+          cek_teks "$FILE_A" "Modal.Title"
+          cek_teks "$FILE_A" "Modal.Body"
+          cek_teks "$FILE_A" "<Form>"
+          cek_teks "$FILE_A" "Form.Group"
+          cek_teks "$FILE_A" "<Form.Label>"
+          cek_teks "$FILE_A" "Form.Control"
+          cek_teks "$FILE_A" "<Modal.Footer>"
+          cek_teks "$FILE_A" "onClick={handleClose}"
+          cek_teks "$FILE_B" "<Route path='/TransactionManager' element={ <TransactionManager/> } />"
+          
+          if [ $ERROR -eq 1 ]; then
+            echo ""
+            echo "Status: Struktur tidak boleh dimodifikasi!"
+            exit 1
+          else
+            echo ""
+            echo "✅ AMAN: Struktur deklarasi sudah sesuai dengan materi"
+            exit 0
+          fi
+      
+      # ---------------------------------------------------------
+      # STEP 11: Internal CSS (Variable Object)
+      # ---------------------------------------------------------
+      - name: 11.GET API Konsep Promise
+        run: |
+          ERROR=0
+          # Fungsi pembantu untuk memindai teks
+          cek_teks() {
+            local file=$1
+            local teks_wajib=$2
+            # grep akan mencari teks di dalam file. Jika tidak ketemu, maka ERROR
+            if ! grep -Fq "$teks_wajib" "$file"; then
+              echo "❌ PELANGGARAN di $file: Belum ada berkas ini '$teks_wajib'"
+              ERROR=1
+            fi
+          }
+
+          # FILE 
+          FILEA="../ServerJson/db.json5"
+          FILEB="src/component/TransactionManager.jsx"
+
+          # Mendaftarkan teks yang TIDAK BOLEH dihapus oleh mahasiswa
+          cek_teks "$FILEA" "posts"
+          cek_teks "$FILEA" "comments"
+          cek_teks "$FILEA" "profile"
+          cek_teks "$FILEA" "transaksi"
+          cek_teks "$FILEA" "{id:1, keterangan:"
+          cek_teks "$FILEA" "Pulsa"
+          cek_teks "$FILEA" "Makan siang"
+          cek_teks "$FILEA" "kategori"
+          cek_teks "$FILEA" "nominal"
+
+          cek_teks "$FILEB" "import { useState, useEffect } from 'react'"
+          cek_teks "$FILEB" "const [transaksi, setTransaksi] = useState([])"
+          cek_teks "$FILEB" "const ambilData = () => {"
+          cek_teks "$FILEB" "fetch('http://localhost:3000/transaksi')"
+          cek_teks "$FILEB" ".then ((response) => response.json())"
+          cek_teks "$FILEB" ".then((data) => {"
+          cek_teks "$FILEB" "console.log('Data diterima:', data)"
+          cek_teks "$FILEB" "setTransaksi(data)"
+          cek_teks "$FILEB" ".catch((error) => {"
+          cek_teks "$FILEB" "useEffect(() => {"
+          cek_teks "$FILEB" "ambilData();"
+          cek_teks "$FILEB" "transaksi.map("
+          cek_teks "$FILEB" "<tr key={item.id || index}>"
+          cek_teks "$FILEB" "<td>{index + 1}</td>"
+          cek_teks "$FILEB" "<td>{item.keterangan}</td>"
+          cek_teks "$FILEB" "<td>{item.kategori}</td>"
+          cek_teks "$FILEB" " <td>{item.nominal}</td>"
+          # Cara menggunakannya 
+        
+
+          if [ $ERROR -eq 1 ]; then
+            echo ""
+            echo "Status: Struktur tidak boleh dimodifikasi!"
+            exit 1
+          else
+            echo ""
+            echo "✅ AMAN: Struktur deklarasi sudah sesuai"
+            exit 0
+          fi
+      # ---------------------------------------------------------
+      # STEP 12: Internal CSS (Variable Object)
+      # ---------------------------------------------------------
+      - name: 12.Async / Await 
+        run: |
+          ERROR=0
+          # Fungsi pembantu untuk memindai teks
+          cek_teks() {
+            local file=$1
+            local teks_wajib=$2
+            # grep akan mencari teks di dalam file. Jika tidak ketemu, maka ERROR
+            if ! grep -q "$teks_wajib" "$file"; then
+              echo "❌ PELANGGARAN di $file: Anda menghapus atau mengubah deklarasi '$teks_wajib'"
+              ERROR=1
+            fi
+           }
+          # FILE 
+          FILEB="src/component/TransactionManager.jsx"
+
+          # Mendaftarkan teks yang TIDAK BOLEH dihapus oleh mahasiswa
+
+          cek_teks "$FILEB" "const ambilDataAsync = async () =>{"
+          cek_teks "$FILEB" "try {"
+          cek_teks "$FILEB" "const response = await fetch('http://localhost:3000/transaksi');"
+          cek_teks "$FILEB" "const ambilData = () => {"
+          cek_teks "$FILEB" "fetch('http://localhost:3000/transaksi')"
+          cek_teks "$FILEB" "if (!response.ok) {"
+          cek_teks "$FILEB" ".then((data) => {"
+          cek_teks "$FILEB" "throw new Error ('Gagal mengambil data dari server')"
+          cek_teks "$FILEB" "const data = await response.json()"
+          cek_teks "$FILEB" "console.log ('Data diterima:', data)"
+          cek_teks "$FILEB" "setTransaksi(data)"
+          cek_teks "$FILEB" "console.error('Error:', error.message)"
+          cek_teks "$FILEB" "ambilDataAsync();"
+          cek_teks "$FILEB" "<AppNavigation />"
+          # Cara menggunakannya 
+          if [ $ERROR -eq 1 ]; then
+            echo ""
+            echo "Status: Struktur tidak boleh dimodifikasi!"
+            exit 1
+          else
+            echo ""
+            echo "✅ AMAN: Struktur deklarasi sudah sesuai"
+            exit 0
+          fi
+      
 
       
 
